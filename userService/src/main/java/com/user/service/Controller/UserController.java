@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -22,6 +22,7 @@ public class UserController {
      return new ResponseEntity<>(saveUser , HttpStatus.OK);
     }
 
+    //Get Single User
     @GetMapping("/{userId}")
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
        User user = this.userService.getUserByUserId(userId);
@@ -30,7 +31,6 @@ public class UserController {
 
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<User>> getAllUsers(){
-
         return ResponseEntity.ok(this.userService.getAllUsers());
     }
 
